@@ -17,7 +17,9 @@ export default function App() {
   };
 
   const coursGoalsJSX = coursGoals.map((goal, idx) => (
-    <Text key={idx}>{goal}</Text>
+    <View style={styles.goalItem} key={idx}>
+      <Text style={styles.goalText}>{goal}</Text>
+    </View>
   ));
 
   return (
@@ -31,7 +33,7 @@ export default function App() {
         <Button onPress={addGoalHandler} title="Add goal" />
       </View>
       <View style={styles.goalsContainer}>
-        <Text>List of goals...</Text>
+        <Text style={styles.goalsTitle}>List of goals...</Text>
         <View>{Array.isArray(coursGoals) && coursGoalsJSX}</View>
       </View>
     </View>
@@ -60,7 +62,24 @@ const styles = StyleSheet.create({
     marginRight: 8,
     padding: 8,
   },
+  goalsTitle: {
+    fontSize: 24,
+    color: "#2D414C",
+    marginBottom: 15,
+  },
   goalsContainer: {
     flex: 5,
+  },
+  goalItem: {
+    padding: 10,
+    borderRadius: 7,
+    borderWidth: 1,
+    borderColor: "#BDD630",
+    backgroundColor: "#2D414C",
+    margin: 5,
+  },
+  goalText: {
+    color: "#ffffff",
+    fontSize: 14,
   },
 });
