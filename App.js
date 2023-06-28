@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { StyleSheet, Text, View, Button, TextInput } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TextInput,
+  ScrollView,
+} from "react-native";
 
 export default function App() {
   const [enteredGoalText, setEnteredGoalText] = useState("");
@@ -34,7 +41,7 @@ export default function App() {
       </View>
       <View style={styles.goalsContainer}>
         <Text style={styles.goalsTitle}>List of goals...</Text>
-        <View>{Array.isArray(coursGoals) && coursGoalsJSX}</View>
+        <ScrollView>{Array.isArray(coursGoals) && coursGoalsJSX}</ScrollView>
       </View>
     </View>
   );
