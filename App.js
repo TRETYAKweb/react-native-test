@@ -3,14 +3,22 @@ import { StyleSheet, Text, View, Button, TextInput } from "react-native";
 
 export default function App() {
   const [enteredGoalText, setEnteredGoalText] = useState("");
+  const [coursGoals, setCoursGoals] = useState([]);
 
   const goalInputHandler = (enteredText) => {
     setEnteredGoalText(enteredText);
   };
 
   const addGoalHandler = () => {
-    console.log(enteredGoalText);
+    setCoursGoals((currentCourseGoals) => [
+      ...currentCourseGoals,
+      enteredGoalText,
+    ]);
   };
+
+  const coursGoalsJSX = coursGoals.map((goal, idx) => (
+    <Text key={idx}>{goal}</Text>
+  ));
 
   return (
     <View style={styles.appContainer}>
@@ -24,6 +32,7 @@ export default function App() {
       </View>
       <View style={styles.goalsContainer}>
         <Text>List of goals...</Text>
+        <View>{Array.isArray(coursGoals) && coursGoalsJSX}</View>
       </View>
     </View>
   );
