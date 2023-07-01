@@ -4,10 +4,14 @@ import { styles } from "./style";
 
 export const GoalItem = ({ data, id, onDeleteGoal }) => {
   return (
-    <Pressable onPress={onDeleteGoal.bind(this, id)}>
-      <View style={styles.goalItem}>
+    <View style={styles.goalItem}>
+      <Pressable
+        android_ripple={{ color: "#4E7990" }}
+        onPress={onDeleteGoal.bind(this, id)}
+        style={({ pressed }) => pressed && styles.pressedItem}
+      >
         <Text style={styles.goalText}>{data}</Text>
-      </View>
-    </Pressable>
+      </Pressable>
+    </View>
   );
 };
