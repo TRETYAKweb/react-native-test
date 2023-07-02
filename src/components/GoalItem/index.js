@@ -6,7 +6,6 @@ export const GoalItem = ({ data, id, onDeleteGoal }) => {
   return (
     <View style={styles.goalItem}>
       <Pressable
-        android_ripple={{ color: "#4E7990" }}
         onPress={onDeleteGoal.bind(this, id)}
         style={({ pressed }) => pressed && styles.pressedItem}
       >
