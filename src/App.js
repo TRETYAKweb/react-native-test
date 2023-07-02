@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { StyleSheet, Text, View, FlatList, Button } from "react-native";
-
 import { GoalInput, GoalItem } from "./components";
 
 export default function App() {
@@ -40,28 +39,30 @@ export default function App() {
   };
 
   return (
-    <View style={styles.appContainer}>
-      <View style={{ marginBottom: 25 }}>
-        <Button
-          title="Add new goal"
-          color={"#182831"}
-          onPress={startModalHandler}
+    <>
+      <View style={styles.appContainer}>
+        <View style={{ marginBottom: 25 }}>
+          <Button
+            title="Add new goal"
+            color={"#E65C5C"}
+            onPress={startModalHandler}
+          />
+        </View>
+        <GoalInput
+          isModalOpen={modalIsVisible}
+          onCancle={endModalHandler}
+          onAddGoal={addGoalHandler}
         />
+        <View style={styles.goalsContainer}>
+          <Text style={styles.goalsTitle}>List of goals...</Text>
+          <FlatList
+            data={coursGoals}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id}
+          />
+        </View>
       </View>
-      <GoalInput
-        isModalOpen={modalIsVisible}
-        onCancle={endModalHandler}
-        onAddGoal={addGoalHandler}
-      />
-      <View style={styles.goalsContainer}>
-        <Text style={styles.goalsTitle}>List of goals...</Text>
-        <FlatList
-          data={coursGoals}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-        />
-      </View>
-    </View>
+    </>
   );
 }
 
@@ -73,7 +74,6 @@ const styles = StyleSheet.create({
   },
   goalsTitle: {
     fontSize: 24,
-    color: "#2D414C",
     marginBottom: 15,
   },
   goalsContainer: {
